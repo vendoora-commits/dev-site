@@ -22,7 +22,7 @@ export default function AboutPage() {
 		<div className="min-h-screen bg-white text-black">
 			<div className="container mx-auto px-4 py-12 max-w-3xl">
 				<div className="w-full rounded-lg mb-8 overflow-hidden">
-					<Image src="/images/Global expansion.png" alt="Global Expansion Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
+					<Image src="/images/Full-Market-Potential.png" alt="Global Expansion Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
 				</div>
 
 				{/* More Substance: What is Vendoora? */}

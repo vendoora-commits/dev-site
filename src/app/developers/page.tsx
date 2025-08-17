@@ -9,7 +9,7 @@ export default function DevelopersPage() {
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/29DE43A0-F1B0-40A6-A7BC-EBB3206B1948.png" alt="Careers Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
+          <Image src="/images/Dev-Team-Careers.png" alt="Careers Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
         <p className="text-sm uppercase tracking-wide text-blue-600">Careers</p>
         <h1 className="text-5xl font-bold mt-4">Build the Future of Operational Services</h1>

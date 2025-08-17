@@ -8,7 +8,7 @@ export default function HomePage() {
       {/* HERO SECTION */}
       <header className="container mx-auto px-4 py-16">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/88E069A5-9563-4D82-800D-00E7705B76C7.png" alt="HavenOS Hero" width={1600} height={600} priority />
+          <Image src="/images/Vendoora_Hero.png" alt="HavenOS Hero" width={1600} height={600} priority />
         </div>
         <h1 className="text-6xl font-extrabold text-blue-900 mb-6">Vendoora</h1>
         <h2 className="text-3xl font-semibold text-blue-700 mb-4">Enterprise AI for Hospitality & Maritime</h2>
@@ -35,7 +35,7 @@ export default function HomePage() {
             <Link href="/havenos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">Explore HavenOS</Link>
           </div>
           <div className="flex-1 flex justify-center">
-            <Image src="/images/0DB5CE95-F761-48B3-93D1-81631EC0B911.png" alt="HavenOS" width={400} height={200} className="rounded shadow" />
+            <Image src="/images/DockOS_guest_services.png" alt="HavenOS" width={400} height={200} className="rounded shadow" />
           </div>
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function HomePage() {
             <Link href="/dockos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">Explore DockOS</Link>
           </div>
           <div className="flex-1 flex justify-center">
-            <Image src="/images/2CA64176-178A-4381-82DB-083B68138C8A.png" alt="DockOS" width={400} height={200} className="rounded shadow" />
+            <Image src="/images/DockOS-Sync.png" alt="DockOS" width={400} height={200} className="rounded shadow" />
           </div>
         </div>
       </section>
