@@ -1,0 +1,69 @@
+
+> dev-recruitment-platform@0.1.0 build
+> next build
+
+   ▲ Next.js 15.4.6
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/app/contact/page.tsx
+Error:   [31mx[0m You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4m/home/vendoora/vendoora/dev-site/dev-recruitment-platform/src/app/contact/page.tsx[0m:1:1]
+ [2m1[0m | import React, { useState } from 'react';
+   : [35;1m                ^^^^^^^^[0m
+ [2m2[0m | 
+ [2m3[0m | export default function ContactPage() {
+ [2m4[0m |   const [formData, setFormData] = useState({
+   `----
+
+Import trace for requested module:
+./src/app/contact/page.tsx
+
+./src/app/page.tsx
+Error:   [31mx[0m Expression expected
+    ,-[[36;1;4m/home/vendoora/vendoora/dev-site/dev-recruitment-platform/src/app/page.tsx[0m:72:1]
+ [2m69[0m |     </div>
+ [2m70[0m |   );
+ [2m71[0m | }
+ [2m72[0m |           </a>
+    : [35;1m          ^[0m
+ [2m73[0m |         </div>
+ [2m74[0m |       </main>
+ [2m75[0m |       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+    `----
+  [31mx[0m Unterminated regexp literal
+    ,-[[36;1;4m/home/vendoora/vendoora/dev-site/dev-recruitment-platform/src/app/page.tsx[0m:72:1]
+ [2m69[0m |     </div>
+ [2m70[0m |   );
+ [2m71[0m | }
+ [2m72[0m |           </a>
+    : [35;1m           ^^^[0m
+ [2m73[0m |         </div>
+ [2m74[0m |       </main>
+ [2m75[0m |       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+    `----
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/home/vendoora/vendoora/dev-site/dev-recruitment-platform/src/app/page.tsx[0m:72:1]
+ [2m69[0m |     </div>
+ [2m70[0m |   );
+ [2m71[0m | }
+ [2m72[0m |           </a>
+    : [35;1m            ^^[0m
+ [2m73[0m |         </div>
+ [2m74[0m |       </main>
+ [2m75[0m |       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/page.tsx
+
+
+> Build failed because of webpack errors
