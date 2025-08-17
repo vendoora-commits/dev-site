@@ -24,7 +24,8 @@ export default function DockOSPage() {
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/2CA64176-178A-4381-82DB-083B68138C8A.png" alt="DockOS Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
+          {/* Update DockOS Hero image */}
+          <Image src="/images/DockOS_Admin_UI_Hero.png" alt="DockOS Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
         <p className="text-sm uppercase tracking-wide text-blue-600">DockOS</p>
         <h1 className="text-5xl font-bold mt-4">AI-Driven Operational Services for Marinas</h1>

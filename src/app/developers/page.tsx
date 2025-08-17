@@ -136,6 +136,12 @@ export default function DevelopersPage() {
           </div>
         </section>
       </header>
+
+      <footer className="w-full bg-gray-100 py-8 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <Image src="/images/Full-Market-Potential.png" alt="Full Market Potential" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
+        </div>
+      </footer>
     </div>
   );
 }

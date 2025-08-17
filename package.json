@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@vercel/sdk": "^1.10.4",
     "next": "^15.4.6",
     "next-intl": "^4.3.4",
     "react": "19.1.0",
