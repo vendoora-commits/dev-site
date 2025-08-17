@@ -2,11 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function DevelopersPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
+        <div className="w-full rounded-lg mb-8 overflow-hidden">
+          <Image src="/images/developers-hero.svg" alt="Careers" width={1200} height={400} />
+        </div>
         <p className="text-sm uppercase tracking-wide text-blue-600">Careers</p>
         <h1 className="text-5xl font-bold mt-4">
           Build the Future of Operational Services

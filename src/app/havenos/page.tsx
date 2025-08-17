@@ -1,11 +1,20 @@
-import React from 'react';
+
+
 import Link from 'next/link';
+import Image from 'next/image';
+import { BuildingOffice2Icon, UserIcon, UsersIcon, ShieldCheckIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function HavenOSPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
-        <p className="text-sm uppercase tracking-wide text-blue-600">HavenOS</p>
+        <div className="w-full rounded-lg mb-8 overflow-hidden">
+          <Image src="/images/havenos-hero.svg" alt="HavenOS" width={1200} height={400} />
+        </div>
+        <div className="flex items-center gap-2 mb-2">
+          <BuildingOffice2Icon className="h-5 w-5 text-blue-600" aria-hidden="true" />
+          <p className="text-sm uppercase tracking-wide text-blue-600">HavenOS</p>
+        </div>
         <h1 className="text-5xl font-bold mt-4">
           AI-Powered Operational Services
         </h1>
@@ -15,7 +24,10 @@ export default function HavenOSPage() {
         </p>
 
         <section className="mt-16">
-          <h2 className="text-3xl font-semibold mb-8">The Guest Experience</h2>
+          <div className="flex items-center gap-2 mb-8">
+            <UserIcon className="h-7 w-7 text-blue-600" aria-hidden="true" />
+            <h2 className="text-3xl font-semibold">The Guest Experience</h2>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               'Contactless check-in',
@@ -32,7 +44,10 @@ export default function HavenOSPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-3xl font-semibold mb-8">Unified for Staff</h2>
+          <div className="flex items-center gap-2 mb-8">
+            <UsersIcon className="h-7 w-7 text-blue-600" aria-hidden="true" />
+            <h2 className="text-3xl font-semibold">Unified for Staff</h2>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               'Role-adaptive staff app (butler, concierge, housekeeping, valet)',
@@ -47,7 +62,10 @@ export default function HavenOSPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-3xl font-semibold mb-8">Security & Compliance by Design</h2>
+          <div className="flex items-center gap-2 mb-8">
+            <ShieldCheckIcon className="h-7 w-7 text-blue-600" aria-hidden="true" />
+            <h2 className="text-3xl font-semibold">Security & Compliance by Design</h2>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {[
               'GDPR / CCPA / PIPL',
@@ -63,7 +81,10 @@ export default function HavenOSPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-3xl font-semibold mb-8">Sustainability by Design</h2>
+          <div className="flex items-center gap-2 mb-8">
+            <SparklesIcon className="h-7 w-7 text-green-600" aria-hidden="true" />
+            <h2 className="text-3xl font-semibold">Sustainability by Design</h2>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               'Energy, water, and waste tracking',

@@ -1,10 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
+        <div className="w-full rounded-lg mb-8 overflow-hidden">
+          <Image src="/images/home-hero.svg" alt="Vendoora hero" width={1600} height={600} priority />
+        </div>
         <p className="text-sm uppercase tracking-wide text-blue-600">VENDOORA</p>
         <h1 className="text-5xl font-bold mt-4">
           AI-Powered Operations. Human-Centered Results.

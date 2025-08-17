@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -63,6 +64,9 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       <div className="container mx-auto px-4 py-12 max-w-2xl">
+        <div className="w-full rounded-lg mb-8 overflow-hidden">
+          <Image src="/images/contact-hero.svg" alt="Contact" width={1200} height={400} />
+        </div>
         <h1 className="text-5xl font-bold mb-8">Get in Touch</h1>
         <p className="text-xl mb-12">
           Questions, demos, or partnerships—reach out and we&apos;ll respond quickly.
