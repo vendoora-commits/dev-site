@@ -9,16 +9,37 @@ export default function DevelopersPage() {
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/developers-hero.svg" alt="Careers" width={1200} height={400} />
+          <Image src="/images/29DE43A0-F1B0-40A6-A7BC-EBB3206B1948.png" alt="Careers Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
         <p className="text-sm uppercase tracking-wide text-blue-600">Careers</p>
-        <h1 className="text-5xl font-bold mt-4">
-          Build the Future of Operational Services
-        </h1>
-        <p className="text-xl mt-4">
-          Join Vendoora as an employee-owned S-Corp. Ship AI-powered platforms 
-          that run on the edge and in the cloud—and share in profits for the first five years.
-        </p>
+        <h1 className="text-5xl font-bold mt-4">Build the Future of Operational Services</h1>
+        <p className="text-xl mt-4">Join Vendoora as an employee-owned S-Corp. Ship AI-powered platforms that run on the edge and in the cloud—and share in profits for the first five years.</p>
+
+        {/* More Substance: Why Join Vendoora? */}
+        <section className="mt-16">
+          <h2 className="text-3xl font-bold mb-6 text-blue-900">Why Join Vendoora?</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">Employee-Owned</h3>
+              <p>Profit-sharing for the first five years. High ownership, direct production impact, and small teams.</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">AI-Native Stack</h3>
+              <p>Work with edge + cloud, Apple Intelligence, and global i18n. Ship platforms that run the real world.</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">Privacy & Accessibility</h3>
+              <p>Privacy by default, accessibility by design, measurable sustainability.</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">Continuous Learning</h3>
+              <p>Multilingual dev flow, real-time translation, CI/CD triggers for translation updates.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Advanced Next.js Features: Loading State Example */}
+        {/* <Suspense fallback={<div>Loading...</div>}> ...future dynamic content... </Suspense> */}
 
         <section className="mt-16">
           <h2 className="text-3xl font-semibold mb-8">What You&apos;ll Build</h2>

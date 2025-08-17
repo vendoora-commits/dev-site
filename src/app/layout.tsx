@@ -1,11 +1,34 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { NextIntlClientProvider, useMessages } from 'next-intl';
 import './globals.css'
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 export const metadata: Metadata = {
   title: 'Vendoora: AI-Powered Operational Services',
   description:
     'Unified operational services for hospitality and maritime, built by developers who want to own the future.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: '/next.svg', type: 'image/svg+xml' }
+    ]
+  },
+  openGraph: {
+    title: 'Vendoora: AI-Powered Operational Services',
+    description: 'Unified operational services for hospitality and maritime, built by developers who want to own the future.',
+    images: ['/images/88E069A5-9563-4D82-800D-00E7705B76C7.png'],
+    url: 'https://www.vendoora.dev',
+    siteName: 'Vendoora',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vendoora: AI-Powered Operational Services',
+    description: 'Unified operational services for hospitality and maritime, built by developers who want to own the future.',
+    images: ['/images/88E069A5-9563-4D82-800D-00E7705B76C7.png'],
+  },
+  metadataBase: new URL('https://www.vendoora.dev'),
 }
 
 export default function RootLayout({
@@ -13,44 +36,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const messages = useMessages();
   return (
     <html lang="en">
-      <body>
-        <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-blue-600">
-              Vendoora
-            </Link>
-            <div className="space-x-6">
-              <Link href="/havenos" className="hover:text-blue-600 transition">
-                HavenOS
+      <body className="bg-gray-50">
+        <NextIntlClientProvider messages={messages}>
+          {/* ENTERPRISE NAVIGATION BAR */}
+          <nav className="w-full bg-blue-900 py-6 shadow-lg fixed top-0 left-0 right-0 z-50">
+            <div className="container mx-auto flex justify-between items-center px-4">
+              <Link href="/" className="text-3xl font-bold text-white tracking-wide">
+                {messages['Vendoora']}
               </Link>
-              <Link href="/dockos" className="hover:text-blue-600 transition">
-                DockOS
-              </Link>
-              <Link href="/developers" className="hover:text-blue-600 transition">
-                Careers
-              </Link>
-              <Link href="/contact" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                Contact
-              </Link>
+              <div className="flex space-x-8 items-center">
+                <Link href="/" className="text-white font-bold text-lg hover:text-blue-300">{messages['Home']}</Link>
+                <Link href="/havenos" className="text-white font-bold text-lg hover:text-blue-300">{messages['HavenOS']}</Link>
+                <Link href="/dockos" className="text-white font-bold text-lg hover:text-blue-300">{messages['DockOS']}</Link>
+                <Link href="/technology" className="text-white font-bold text-lg hover:text-blue-300">{messages['Technology']}</Link>
+                <Link href="/about" className="text-white font-bold text-lg hover:text-blue-300">{messages['About']}</Link>
+                <Link href="/contact" className="text-white font-bold text-lg hover:text-blue-300">{messages['Contact']}</Link>
+                <Link href="/developers" className="text-white font-bold text-lg hover:text-blue-300">{messages['Careers']}</Link>
+                {/* Language Switcher */}
+                <LanguageSwitcher />
+              </div>
             </div>
-          </div>
-        </nav>
-        <div className="pt-20">{children}</div>
-        <footer className="bg-gray-100 py-12">
-          <div className="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Vendoora. All rights reserved.</p>
-            <div className="mt-4 space-x-4">
-              <Link href="/privacy" className="text-gray-600 hover:text-blue-600">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-600 hover:text-blue-600">
-                Terms of Service
-              </Link>
-            </div>
-          </div>
-        </footer>
+          </nav>
+          <div className="pt-28">{children}</div>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

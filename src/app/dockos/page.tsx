@@ -1,22 +1,60 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'DockOS | Vendoora',
+  description: 'AI-driven operational services for marinas. Slip reservations, dock concierge, guest loyalty, and vessel analytics.',
+  openGraph: {
+    title: 'DockOS | Vendoora',
+    description: 'AI-driven operational services for marinas. Slip reservations, dock concierge, guest loyalty, and vessel analytics.',
+    images: ['/images/2CA64176-178A-4381-82DB-083B68138C8A.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DockOS | Vendoora',
+    description: 'AI-driven operational services for marinas. Slip reservations, dock concierge, guest loyalty, and vessel analytics.',
+    images: ['/images/2CA64176-178A-4381-82DB-083B68138C8A.png'],
+  },
+};
 
 export default function DockOSPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/dockos-hero.svg" alt="DockOS" width={1200} height={400} />
+          <Image src="/images/2CA64176-178A-4381-82DB-083B68138C8A.png" alt="DockOS Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
         <p className="text-sm uppercase tracking-wide text-blue-600">DockOS</p>
-        <h1 className="text-5xl font-bold mt-4">
-          AI-Driven Operational Services for Marinas
-        </h1>
-        <p className="text-xl mt-4">
-          Marina operations, reimagined—P2P/edge resilience, guest-grade experiences, 
-          and compliant payments from dock to deck.
-        </p>
+        <h1 className="text-5xl font-bold mt-4">AI-Driven Operational Services for Marinas</h1>
+        <p className="text-xl mt-4">Marina operations, reimagined—P2P/edge resilience, guest-grade experiences, and compliant payments from dock to deck.</p>
+
+        {/* More Substance: Features & Use Cases */}
+        <section className="mt-16">
+          <h2 className="text-3xl font-bold mb-6 text-blue-900">Why Choose DockOS?</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">Offline-First Resilience</h3>
+              <p>Edge-ready, encrypted peer-to-peer sync keeps operations running even when the cloud is down.</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">PCI-Ready Payments</h3>
+              <p>Compliant, secure payments from dock to deck. End-to-end encryption for shore and vessel.</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">Live Operations</h3>
+              <p>Real-time slip assignments, alerts, and vessel analytics. Predictive maintenance and AI-supported navigation.</p>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg shadow">
+              <h3 className="text-xl font-bold mb-2">Marketplace & Loyalty</h3>
+              <p>Guest loyalty programs and marina marketplace for new revenue streams.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Advanced Next.js Features: Loading State Example */}
+        {/* <Suspense fallback={<div>Loading...</div>}> ...future dynamic content... </Suspense> */}
 
         <section className="mt-16">
           <h2 className="text-3xl font-semibold mb-8">Marina Management Simplified</h2>

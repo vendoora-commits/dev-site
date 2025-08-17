@@ -1,16 +1,79 @@
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Technology | Vendoora',
+  description: 'Modern stack: Next.js, Tailwind, Heroicons, edge + cloud, privacy-first AI, and global i18n.',
+  openGraph: {
+    title: 'Technology | Vendoora',
+    description: 'Modern stack: Next.js, Tailwind, Heroicons, edge + cloud, privacy-first AI, and global i18n.',
+    images: ['/images/64AF5A6C-DF04-48A4-A5AD-5D111E546B73.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Technology | Vendoora',
+    description: 'Modern stack: Next.js, Tailwind, Heroicons, edge + cloud, privacy-first AI, and global i18n.',
+    images: ['/images/64AF5A6C-DF04-48A4-A5AD-5D111E546B73.png'],
+  },
+};
 
 export default function TechnologyPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/technology-hero.svg" alt="Technology" width={1200} height={400} />
+          <Image src="/images/64AF5A6C-DF04-48A4-A5AD-5D111E546B73.png" alt="Technology Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
 
         <p className="text-sm uppercase tracking-wide text-blue-600 mb-2">Technology</p>
         <h1 className="text-5xl font-bold mb-4">Edge + Cloud, AI-Native, Privacy-First</h1>
         <p className="text-xl mb-10">A modern stack designed to run the real world—online and offline.</p>
+
+        {/* Responsive Gallery Section */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6 text-blue-900">Tech Highlights</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="flex flex-col items-center">
+              <Image src="/images/0DB5CE95-F761-48B3-93D1-81631EC0B911.png" alt="Edge Node" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <span className="mt-2 text-base text-gray-800 font-medium text-center">Edge Node</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Image src="/images/B854FFF6-9442-4BAC-8A38-9578C7EF52A3.png" alt="Cloud Sync" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <span className="mt-2 text-base text-gray-800 font-medium text-center">Cloud Sync</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Image src="/images/BDBF1CB5-846C-4FAD-81DD-EA6470CCF0C1.png" alt="Security" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <span className="mt-2 text-base text-gray-800 font-medium text-center">Security</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Image src="/images/CEC8952F-65B8-4440-9FA7-7AF844536702.png" alt="Compliance" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <span className="mt-2 text-base text-gray-800 font-medium text-center">Compliance</span>
+            </div>
+          </div>
+        </section>
+
+        {/* More Substance: Tech Stack & How It Works */}
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-2">Our Tech Stack</h2>
+          <ul className="list-disc ml-6 text-gray-700">
+            <li>Next.js 15 (App Router, Turbopack, Metadata API)</li>
+            <li>Tailwind CSS 4 for rapid, responsive UI</li>
+            <li>Heroicons for beautiful SVG icons</li>
+            <li>next/font for optimized font loading</li>
+            <li>TypeScript for type safety</li>
+            <li>Supabase/Postgres for real-time data</li>
+            <li>Edge nodes for local continuity, cloud for global insight</li>
+            <li>Encrypted P2P sync, E2E security, CI/CD, i18n</li>
+          </ul>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="text-2xl font-semibold mb-2">How It Works</h2>
+          <p>Vendoora platforms run on the edge and in the cloud, using privacy-first AI and real-time data to power hospitality and maritime operations globally.</p>
+        </section>
+
+        {/* Advanced Next.js Features: Loading State Example */}
+        {/* <Suspense fallback={<div>Loading...</div>}> ...future dynamic content... </Suspense> */}
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-2">Core Stack</h2>
