@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Technology | Vendoora',
     description: 'Modern stack: Next.js, Tailwind, Heroicons, edge + cloud, privacy-first AI, and global i18n.',
-    images: ['/images/64AF5A6C-DF04-48A4-A5AD-5D111E546B73.png'],
+    images: ['public/images/Technology_Hero.png'],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Technology | Vendoora',
-    description: 'Modern stack: Next.js, Tailwind, Heroicons, edge + cloud, privacy-first AI, and global i18n.',
-    images: ['/images/64AF5A6C-DF04-48A4-A5AD-5D111E546B73.png'],
+  card: 'summary_large_image',
+  title: 'Technology | Vendoora',
+  description: 'Modern stack: Next.js, Tailwind, Heroicons, edge + cloud, privacy-first AI, and global i18n.',
+  images: ['/images/Technology_Hero.png'],
   },
 };
 
@@ -22,7 +22,7 @@ export default function TechnologyPage() {
     <div className="min-h-screen bg-white text-black">
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/64AF5A6C-DF04-48A4-A5AD-5D111E546B73.png" alt="Technology Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
+          <Image src="/images/Technology_Hero.png" alt="Technology Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
 
         <p className="text-sm uppercase tracking-wide text-blue-600 mb-2">Technology</p>
@@ -34,19 +34,19 @@ export default function TechnologyPage() {
           <h2 className="text-2xl font-semibold mb-6 text-blue-900">Tech Highlights</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex flex-col items-center">
-              <Image src="/images/0DB5CE95-F761-48B3-93D1-81631EC0B911.png" alt="Edge Node" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <Image src="/images/Technology_Edge_Node.png" alt="Edge Node" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
               <span className="mt-2 text-base text-gray-800 font-medium text-center">Edge Node</span>
             </div>
             <div className="flex flex-col items-center">
-              <Image src="/images/B854FFF6-9442-4BAC-8A38-9578C7EF52A3.png" alt="Cloud Sync" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <Image src="/images/Technology_Cloud_Sync.png" alt="Cloud Sync" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
               <span className="mt-2 text-base text-gray-800 font-medium text-center">Cloud Sync</span>
             </div>
             <div className="flex flex-col items-center">
-              <Image src="/images/BDBF1CB5-846C-4FAD-81DD-EA6470CCF0C1.png" alt="Security" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <Image src="/images/Technology_Security.png" alt="Security" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
               <span className="mt-2 text-base text-gray-800 font-medium text-center">Security</span>
             </div>
             <div className="flex flex-col items-center">
-              <Image src="/images/CEC8952F-65B8-4440-9FA7-7AF844536702.png" alt="Compliance" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <Image src="/images/Technology_Compliance.png" alt="Compliance" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
               <span className="mt-2 text-base text-gray-800 font-medium text-center">Compliance</span>
             </div>
           </div>
