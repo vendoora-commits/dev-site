@@ -24,7 +24,7 @@ export default function HavenOSPage() {
     <div className="min-h-screen bg-white text-black">
       <header className="container mx-auto px-4 py-12">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
-          <Image src="/images/HavenOS-DockOS_Secure_by_Design.png" alt="HavenOS Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
+          <Image src="/images/Main_HavenOS.png" alt="HavenOS Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
         <div className="flex items-center gap-2 mb-2">
           <BuildingOffice2Icon className="h-5 w-5 text-blue-600" aria-hidden="true" />

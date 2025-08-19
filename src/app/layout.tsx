@@ -10,9 +10,15 @@ export const metadata: Metadata = {
     'Unified operational services for hospitality and maritime, built by developers who want to own the future.',
   icons: {
     icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' },
-      { url: '/favicon.ico', type: 'image/svg+xml' }
-    ]
+      { url: '/favicon_io/favicon.ico', type: 'image/x-icon' },
+      { url: '/favicon_io/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon_io/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon_io/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [
+      { url: '/favicon_io/apple-touch-icon.png', sizes: '180x180' }
+    ],
+  // Android icons are referenced via the manifest file below
   },
   openGraph: {
     title: 'Vendoora: AI-Powered Operational Services',
@@ -22,6 +28,7 @@ export const metadata: Metadata = {
     siteName: 'Vendoora',
     type: 'website',
   },
+  manifest: '/favicon_io/site.webmanifest',
   twitter: {
     card: 'summary_large_image',
     title: 'Vendoora: AI-Powered Operational Services',
