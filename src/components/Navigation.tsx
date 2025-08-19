@@ -53,17 +53,14 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center">
               <Image 
-                src="/images/vendoora_logo.png" 
+                src="/images/vendoora-logo-full.png" 
                 alt="Vendoora Logo" 
-                width={40} 
+                width={160} 
                 height={40}
-                className="hover:scale-110 transition-transform duration-200"
+                className="hover:opacity-90 transition-opacity duration-200"
               />
-              <span className="text-xl font-bold text-white tracking-wide hover:text-blue-200 transition-colors duration-200">
-                {messages['Vendoora'] || 'Vendoora'}
-              </span>
             </Link>
           </div>
 
