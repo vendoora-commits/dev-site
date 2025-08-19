@@ -5,13 +5,13 @@ import './globals.css'
 import LanguageSwitcher from '../components/LanguageSwitcher';
 
 export const metadata: Metadata = {
-  title: 'Vendoora: AI-Powered Operational Services',
+  title: 'Vendoora: Operational Services',
   description:
     'Unified operational services for hospitality and maritime, built by developers who want to own the future.',
   icons: {
     icon: [
       { url: '/favicon.ico', type: 'image/x-icon' },
-      { url: '/next.svg', type: 'image/svg+xml' }
+      { url: '/favicon.ico', type: 'image/svg+xml' }
     ]
   },
   openGraph: {
