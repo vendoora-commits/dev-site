@@ -20,7 +20,10 @@ export default function HomePage() {
       {/* HAVENOS SECTION */}
       <section className="container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1">
+          <div className="flex-1 order-2 md:order-1 flex justify-center">
+            <Image src="/images/Main_HavenOS.png" alt="HavenOS" width={400} height={200} className="rounded shadow" />
+          </div>
+          <div className="flex-1 order-1 md:order-2">
             <h2 className="text-4xl font-bold text-blue-900 mb-4">HavenOS</h2>
             <p className="text-lg text-gray-700 mb-6">
               HavenOS is the AI-powered platform for hospitality operations. It streamlines guest check-in, smart room controls, loyalty rewards, and staff workflows—all with privacy-preserving, on-device AI. Sustainability and compliance are built in, with dashboards for managers and QR storytelling for guests.
@@ -34,16 +37,17 @@ export default function HomePage() {
             </ul>
             <Link href="/havenos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">Explore HavenOS</Link>
           </div>
-          <div className="flex-1 flex justify-center">
-            <Image src="/images/Main_HavenOS.png" alt="HavenOS" width={400} height={200} className="rounded shadow" />
-          </div>
+          {/* Removed duplicate image and placeholder comment */}
         </div>
       </section>
 
       {/* DOCKOS SECTION */}
       <section className="container mx-auto px-4 py-12">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1">
+          <div className="flex-1 order-2 md:order-1 flex justify-center">
+            <Image src="/images/Main_DockOS.png" alt="DockOS" width={400} height={200} className="rounded shadow" />
+          </div>
+          <div className="flex-1 order-1 md:order-2">
             <h2 className="text-4xl font-bold text-blue-900 mb-4">DockOS</h2>
             <p className="text-lg text-gray-700 mb-6">
               DockOS is the AI-driven platform for marinas. It simplifies slip reservations, dock concierge, guest loyalty, and vessel analytics. Offline-first P2P sync ensures resilience, while PCI-ready payments and end-to-end encryption keep data secure.
@@ -57,9 +61,7 @@ export default function HomePage() {
             </ul>
             <Link href="/dockos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">Explore DockOS</Link>
           </div>
-          <div className="flex-1 flex justify-center">
-            <Image src="/images/Main_DockOS.png" alt="DockOS" width={400} height={200} className="rounded shadow" />
-          </div>
+          {/* Removed duplicate image and placeholder comment */}
         </div>
       </section>
 
