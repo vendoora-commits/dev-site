@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon_io/favicon.ico', type: 'image/x-icon' },
-      { url: '/favicon_io/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon_io/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
       { url: '/favicon_io/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
     ],
