@@ -14,6 +14,8 @@ export default function ContactPage() {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const validateForm = () => {
     let valid = true;
@@ -41,15 +43,40 @@ export default function ContactPage() {
     return valid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      // This would typically be replaced with actual form submission logic
-      console.log(formData);
-      alert('Thank you for your message. We will get back to you soon!');
-      // Reset form
-      setFormData({ name: '', email: '', message: '' });
-      setErrors({ name: '', email: '', message: '' });
+    setSubmitMessage('');
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage('Thank you for your message! We will get back to you soon.');
+        // Reset form
+        setFormData({ name: '', email: '', message: '' });
+        setErrors({ name: '', email: '', message: '' });
+      } else {
+        setSubmitMessage(`Error: ${data.error || 'Failed to send message'}`);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitMessage('Error: Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -71,6 +98,18 @@ export default function ContactPage() {
         <p className="text-xl mb-12">
           Questions, demos, or partnerships—reach out and we&apos;ll respond quickly.
         </p>
+        
+        {/* Submit Message */}
+        {submitMessage && (
+          <div className={`mb-6 p-4 rounded-md ${
+            submitMessage.includes('Error') 
+              ? 'bg-red-50 text-red-700 border border-red-200' 
+              : 'bg-green-50 text-green-700 border border-green-200'
+          }`}>
+            {submitMessage}
+          </div>
+        )}
+        
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -117,8 +156,16 @@ export default function ContactPage() {
               <p className="mt-2 text-sm text-red-600">{errors.message}</p>
             )}
           </div>
-          <button type="submit" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            Send Message
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className={`px-6 py-3 rounded-lg transition font-medium ${
+              isSubmitting 
+                ? 'bg-gray-400 text-gray-700 cursor-not-allowed' 
+                : 'bg-blue-600 text-white hover:bg-blue-700'
+            }`}
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
           </button>
         </form>
         
