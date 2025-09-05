@@ -12,7 +12,7 @@ export default function LanguageSwitcher() {
     const currentPath = window.location.pathname;
     
     // Remove current locale from path if it exists
-    const pathWithoutLocale = currentPath.replace(/^\/(en|es|pt|fr|bn|uz|ru|he|ar|ur)/, '') || '/';
+    const pathWithoutLocale = currentPath.replace(/^\/(en|es|pt|fr|bn|uz|ru|he|ar|ur|de|sv|fi|nl|ng|sw)/, '') || '/';
     
     // Navigate to new locale (all locales now have prefixes)
     window.location.href = `/${locale}${pathWithoutLocale}`;
@@ -39,6 +39,12 @@ export default function LanguageSwitcher() {
         <option value="he">עברית</option>
         <option value="ar">العربية</option>
         <option value="ur">اردو</option>
+        <option value="de">DE</option>
+        <option value="sv">SV</option>
+        <option value="fi">FI</option>
+        <option value="nl">NL</option>
+        <option value="ng">NG</option>
+        <option value="sw">SW</option>
       </select>
     </form>
   );
