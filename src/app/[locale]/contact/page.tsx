@@ -2,8 +2,15 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { useMessages, useLocale } from 'next-intl';
+import { getDirection } from '../../../utils/direction';
 
 export default function ContactPage() {
+  const messages = useMessages();
+  const locale = useLocale();
+  const direction = getDirection(locale);
+  const isRTL = direction === 'rtl';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,20 +29,20 @@ export default function ContactPage() {
     const newErrors = { name: '', email: '', message: '' };
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = messages['ContactNameRequired'] as string;
       valid = false;
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = messages['ContactEmailRequired'] as string;
       valid = false;
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Invalid email address';
+      newErrors.email = messages['ContactEmailInvalid'] as string;
       valid = false;
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = messages['ContactMessageRequired'] as string;
       valid = false;
     }
 
@@ -65,16 +72,16 @@ export default function ContactPage() {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitMessage('Thank you for your message! We will get back to you soon.');
+        setSubmitMessage(messages['ContactSuccessMessage'] as string);
         // Reset form
         setFormData({ name: '', email: '', message: '' });
         setErrors({ name: '', email: '', message: '' });
       } else {
-        setSubmitMessage(`Error: ${data.error || 'Failed to send message'}`);
+        setSubmitMessage(`Error: ${data.error || messages['ContactErrorMessage']}`);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setSubmitMessage('Error: Failed to send message. Please try again.');
+      setSubmitMessage(messages['ContactErrorMessage'] as string);
     } finally {
       setIsSubmitting(false);
     }
@@ -89,14 +96,14 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className={`min-h-screen bg-white text-black ${isRTL ? 'rtl' : 'ltr'}`}>
       <div className="container mx-auto px-4 py-12 max-w-3xl">
         <div className="w-full rounded-lg mb-8 overflow-hidden">
           <Image src="/images/Guest_app_Ai_model.png" alt="Contact Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
         </div>
-        <h1 className="text-5xl font-bold mb-8">Get in Touch</h1>
-        <p className="text-xl mb-12">
-          Questions, demos, or partnerships—reach out and we&apos;ll respond quickly.
+        <h1 className={`text-5xl font-bold mb-8 ${isRTL ? 'text-right' : 'text-left'}`}>{messages['ContactTitle']}</h1>
+        <p className={`text-xl mb-12 ${isRTL ? 'text-right' : 'text-left'}`}>
+          {messages['ContactDescription']}
         </p>
         
         {/* Submit Message */}
@@ -112,8 +119,8 @@ export default function ContactPage() {
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Name
+            <label htmlFor="name" className={`block text-sm font-medium text-gray-700 ${isRTL ? 'text-right' : 'text-left'}`}>
+              {messages['ContactName']}
             </label>
             <input
               id="name"
@@ -123,12 +130,12 @@ export default function ContactPage() {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             />
             {errors.name && (
-              <p className="mt-2 text-sm text-red-600">{errors.name}</p>
+              <p className={`mt-2 text-sm text-red-600 ${isRTL ? 'text-right' : 'text-left'}`}>{errors.name}</p>
             )}
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
+            <label htmlFor="email" className={`block text-sm font-medium text-gray-700 ${isRTL ? 'text-right' : 'text-left'}`}>
+              {messages['ContactEmail']}
             </label>
             <input
               id="email"
@@ -138,12 +145,12 @@ export default function ContactPage() {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             />
             {errors.email && (
-              <p className="mt-2 text-sm text-red-600">{errors.email}</p>
+              <p className={`mt-2 text-sm text-red-600 ${isRTL ? 'text-right' : 'text-left'}`}>{errors.email}</p>
             )}
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-              Message
+            <label htmlFor="message" className={`block text-sm font-medium text-gray-700 ${isRTL ? 'text-right' : 'text-left'}`}>
+              {messages['ContactMessage']}
             </label>
             <textarea
               id="message"
@@ -153,7 +160,7 @@ export default function ContactPage() {
               rows={4}
             />
             {errors.message && (
-              <p className="mt-2 text-sm text-red-600">{errors.message}</p>
+              <p className={`mt-2 text-sm text-red-600 ${isRTL ? 'text-right' : 'text-left'}`}>{errors.message}</p>
             )}
           </div>
           <button 
@@ -165,39 +172,39 @@ export default function ContactPage() {
                 : 'bg-blue-600 text-white hover:bg-blue-700'
             }`}
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? messages['ContactSending'] : messages['ContactSendMessage']}
           </button>
         </form>
         
         {/* Responsive Gallery Section */}
         <section className="mt-12 mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-blue-900">Connect with Us</h2>
+          <h2 className={`text-2xl font-semibold mb-6 text-blue-900 ${isRTL ? 'text-right' : 'text-left'}`}>{messages['ContactConnectWithUs']}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="flex flex-col items-center">
               <Image src="/images/Global_Operations.png" alt="Support" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
-              <span className="mt-2 text-base text-gray-800 font-medium text-center">Support</span>
+              <span className={`mt-2 text-base text-gray-800 font-medium text-center ${isRTL ? 'text-right' : 'text-left'}`}>{messages['ContactSupport']}</span>
             </div>
             <div className="flex flex-col items-center">
               <Image src="/images/Global_Security_Compliance.png" alt="Partnerships" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
-              <span className="mt-2 text-base text-gray-800 font-medium text-center">Partnerships</span>
+              <span className={`mt-2 text-base text-gray-800 font-medium text-center ${isRTL ? 'text-right' : 'text-left'}`}>{messages['ContactPartnerships']}</span>
             </div>
             <div className="flex flex-col items-center">
               <Image src="/images/HavenOS-DockOS_Secure_by_Design.png" alt="Demo" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
-              <span className="mt-2 text-base text-gray-800 font-medium text-center">Demo</span>
+              <span className={`mt-2 text-base text-gray-800 font-medium text-center ${isRTL ? 'text-right' : 'text-left'}`}>{messages['ContactDemo']}</span>
             </div>
             <div className="flex flex-col items-center">
-              <Image src="/images/Vendoora_Deployment_model.png" alt="Quick Response" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
-              <span className="mt-2 text-base text-gray-800 font-medium text-center">Quick Response</span>
+              <Image src="/images/Technology_Hero.png" alt="Quick Response" width={300} height={150} className="rounded shadow" sizes="(max-width: 768px) 100vw, 300px" />
+              <span className={`mt-2 text-base text-gray-800 font-medium text-center ${isRTL ? 'text-right' : 'text-left'}`}>{messages['ContactQuickResponse']}</span>
             </div>
           </div>
         </section>
         
         {/* Contact Information */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-2">Contact Information</h2>
-          <p>Email: <a href="mailto:vendoora2025@gmail.com" className="text-blue-600">vendoora2025@gmail.com</a></p>
-          <p>Phone: <a href="tel:+15107302005" className="text-blue-600">+1 (510) 730-2005</a></p>
-          <p>Or use the form above to send us a message directly.</p>
+          <h2 className={`text-2xl font-semibold mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>{messages['ContactInformation']}</h2>
+          <p className={isRTL ? 'text-right' : 'text-left'}>{messages['ContactEmailLabel']} <a href="mailto:vendoora2025@gmail.com" className="text-blue-600">vendoora2025@gmail.com</a></p>
+          <p className={isRTL ? 'text-right' : 'text-left'}>{messages['ContactPhoneLabel']} <a href="tel:+15107302005" className="text-blue-600">+1 (510) 730-2005</a></p>
+          <p className={isRTL ? 'text-right' : 'text-left'}>{messages['ContactFormNote']}</p>
         </section>
       </div>
     </div>

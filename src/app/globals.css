@@ -158,15 +158,15 @@ body {
 
 /* RTL responsive adjustments */
 @media (max-width: 768px) {
-  .rtl .md\\:flex-row {
+  .rtl .md\:flex-row {
     flex-direction: column-reverse;
   }
   
-  .rtl .md\\:order-1 {
+  .rtl .md\:order-1 {
     order: 2;
   }
   
-  .rtl .md\\:order-2 {
+  .rtl .md\:order-2 {
     order: 1;
   }
 }

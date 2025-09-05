@@ -1,17 +1,14 @@
-import { notFound } from 'next/navigation';
 import { getRequestConfig } from 'next-intl/server';
-import { getServerLocale } from './utils/domain-locale';
 
 const locales = ['en', 'es', 'pt', 'fr', 'bn', 'uz', 'ru', 'he', 'ar', 'ur'];
 
-export default getRequestConfig(async ({ headers }) => {
-  // Get locale from domain first, then fallback to 'en'
-  const locale = getServerLocale(headers);
-
-  if (!locales.includes(locale)) notFound();
+export default getRequestConfig(async ({ locale }) => {
+  // Validate that the incoming `locale` parameter is valid
+  // If invalid, fall back to default locale instead of calling notFound()
+  const validLocale = locale && locales.includes(locale as (typeof locales)[number]) ? locale : 'en';
 
   return {
-    locale,
-    messages: (await import(`../messages/${locale}.json`)).default
+    locale: validLocale,
+    messages: (await import(`../messages/${validLocale}.json`)).default
   };
 });

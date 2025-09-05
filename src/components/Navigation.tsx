@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useMessages } from 'next-intl';
+import { useMessages, useLocale } from 'next-intl';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from './LanguageSwitcher';
 import { getDirection } from '../utils/direction';
@@ -12,17 +12,9 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [currentLocale, setCurrentLocale] = useState('en');
   const messages = useMessages();
+  const locale = useLocale();
 
-  useEffect(() => {
-    // Detect current locale from URL or localStorage
-    if (typeof window !== 'undefined') {
-      const pathLocale = window.location.pathname.split('/')[1];
-      const locale = ['en', 'es', 'pt', 'fr', 'bn', 'uz', 'ru', 'he', 'ar', 'ur'].includes(pathLocale) ? pathLocale : 'en';
-      setCurrentLocale(locale);
-    }
-  }, []);
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -56,7 +48,7 @@ export default function Navigation() {
     { name: messages['Careers'] || 'Careers', href: '/developers' },
   ];
 
-  const direction = getDirection(currentLocale);
+  const direction = getDirection(locale);
   const isRTL = direction === 'rtl';
 
   return (

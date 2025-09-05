@@ -1,23 +1,21 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useLocale } from 'next-intl';
 import { getDirection } from '../utils/direction';
 
 export default function LanguageSwitcher() {
-  const [currentLocale, setCurrentLocale] = useState('en');
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const pathLocale = window.location.pathname.split('/')[1];
-      const locale = ['en', 'es', 'pt', 'fr', 'bn', 'uz', 'ru', 'he', 'ar', 'ur'].includes(pathLocale) ? pathLocale : 'en';
-      setCurrentLocale(locale);
-    }
-  }, []);
+  const currentLocale = useLocale();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const locale = e.target.value;
-    const path = window.location.pathname.split('/').slice(2).join('/');
-    window.location.href = `/${locale}${path ? '/' + path : ''}`;
+    const currentPath = window.location.pathname;
+    
+    // Remove current locale from path if it exists
+    const pathWithoutLocale = currentPath.replace(/^\/(en|es|pt|fr|bn|uz|ru|he|ar|ur)/, '') || '/';
+    
+    // Navigate to new locale (all locales now have prefixes)
+    window.location.href = `/${locale}${pathWithoutLocale}`;
   };
 
   const direction = getDirection(currentLocale);
@@ -28,7 +26,7 @@ export default function LanguageSwitcher() {
       <select
         name="locale"
         className={`bg-blue-900 text-white font-bold border border-blue-300 rounded px-2 py-1 ${isRTL ? 'text-right' : 'text-left'}`}
-        defaultValue={currentLocale}
+        value={currentLocale}
         onChange={handleChange}
       >
         <option value="en">EN</option>
@@ -36,7 +34,7 @@ export default function LanguageSwitcher() {
         <option value="pt">PT</option>
         <option value="fr">FR</option>
         <option value="bn">বাংলা</option>
-        <option value="uz">O'zbek</option>
+        <option value="uz">O&apos;zbek</option>
         <option value="ru">Русский</option>
         <option value="he">עברית</option>
         <option value="ar">العربية</option>
