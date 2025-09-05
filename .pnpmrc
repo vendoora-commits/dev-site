@@ -1,0 +1,4 @@
+# Allow build scripts for necessary packages
+enable-pre-post-scripts=true
+# Allow specific packages to run build scripts
+allowed-build-scripts=@tailwindcss/oxide,esbuild,sharp,unrs-resolver
