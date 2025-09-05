@@ -2,20 +2,22 @@
 
 import React from 'react';
 import { useLocale } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 import { getDirection } from '../utils/direction';
 
 export default function LanguageSwitcher() {
   const currentLocale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const locale = e.target.value;
-    const currentPath = window.location.pathname;
     
     // Remove current locale from path if it exists
-    const pathWithoutLocale = currentPath.replace(/^\/(en|es|pt|fr|bn|uz|ru|he|ar|ur|de|sv|fi|nl|ng|sw)/, '') || '/';
+    const pathWithoutLocale = pathname.replace(/^\/(en|es|pt|fr|bn|uz|ru|he|ar|ur|de|sv|fi|nl|ng|sw)/, '') || '/';
     
-    // Navigate to new locale (all locales now have prefixes)
-    window.location.href = `/${locale}${pathWithoutLocale}`;
+    // Navigate to new locale using Next.js router for smoother navigation
+    router.push(`/${locale}${pathWithoutLocale}`);
   };
 
   const direction = getDirection(currentLocale);

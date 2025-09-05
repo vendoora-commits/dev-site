@@ -5,12 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useMessages, useLocale } from 'next-intl';
 import { getDirection } from '../../../utils/direction';
+import { useLocaleLinks } from '../../../utils/locale-link';
 
 export default function DevelopersPage() {
   const messages = useMessages();
   const locale = useLocale();
   const direction = getDirection(locale);
   const isRTL = direction === 'rtl';
+  const localeLinks = useLocaleLinks(locale);
 
   return (
     <div className={`min-h-screen bg-white text-black ${isRTL ? 'rtl' : 'ltr'}`}>
@@ -127,7 +129,7 @@ export default function DevelopersPage() {
               <div key={index} className="bg-gray-100 p-6 rounded-lg">
                 <h3 className={`text-xl font-bold mb-2 ${isRTL ? 'text-right' : 'text-left'}`}>{role}</h3>
                 <Link 
-                  href="/contact"
+                  href={localeLinks.contact}
                   className={`mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition ${isRTL ? 'text-right' : 'text-left'}`}
                 >
                   {messages['DevelopersApplyNow']}

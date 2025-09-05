@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useMessages, useLocale } from 'next-intl';
 import { getDirection } from '../../../utils/direction';
+import { useLocaleLinks } from '../../../utils/locale-link';
 import { BuildingOffice2Icon, UserIcon, UsersIcon, ShieldCheckIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function HavenOSPage() {
@@ -11,6 +12,7 @@ export default function HavenOSPage() {
   const locale = useLocale();
   const direction = getDirection(locale);
   const isRTL = direction === 'rtl';
+  const localeLinks = useLocaleLinks(locale);
 
   return (
     <div className={`min-h-screen bg-white text-black ${isRTL ? 'rtl' : 'ltr'}`}>
@@ -125,7 +127,7 @@ export default function HavenOSPage() {
 
         <div className={`mt-16 text-center ${isRTL ? 'text-right' : 'text-left'}`}>
           <Link 
-            href="/developers" 
+            href={localeLinks.careers} 
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
           >
             {messages['HavenOSJoinTeam']}

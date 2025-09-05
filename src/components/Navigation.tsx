@@ -7,6 +7,7 @@ import { useMessages, useLocale } from 'next-intl';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from './LanguageSwitcher';
 import { getDirection } from '../utils/direction';
+import { useLocaleLinks } from '../utils/locale-link';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +15,7 @@ export default function Navigation() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const messages = useMessages();
   const locale = useLocale();
+  const localeLinks = useLocaleLinks(locale);
 
 
   useEffect(() => {
@@ -39,13 +41,13 @@ export default function Navigation() {
   }, [lastScrollY]);
 
   const navigation = [
-    { name: messages['Home'] || 'Home', href: '/' },
-    { name: messages['HavenOS'] || 'HavenOS', href: '/havenos' },
-    { name: messages['DockOS'] || 'DockOS', href: '/dockos' },
-    { name: messages['Technology'] || 'Technology', href: '/technology' },
-    { name: messages['About'] || 'About', href: '/about' },
-    { name: messages['Contact'] || 'Contact', href: '/contact' },
-    { name: messages['Careers'] || 'Careers', href: '/developers' },
+    { name: messages['Home'] || 'Home', href: localeLinks.home },
+    { name: messages['HavenOS'] || 'HavenOS', href: localeLinks.havenos },
+    { name: messages['DockOS'] || 'DockOS', href: localeLinks.dockos },
+    { name: messages['Technology'] || 'Technology', href: localeLinks.technology },
+    { name: messages['About'] || 'About', href: localeLinks.about },
+    { name: messages['Contact'] || 'Contact', href: localeLinks.contact },
+    { name: messages['Careers'] || 'Careers', href: localeLinks.careers },
   ];
 
   const direction = getDirection(locale);
@@ -59,7 +61,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
+            <Link href={localeLinks.home} className="flex items-center">
               <Image 
                 src="/images/vendoora-logo-full.png" 
                 alt="Vendoora Logo" 

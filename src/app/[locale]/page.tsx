@@ -5,12 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useMessages, useLocale } from 'next-intl';
 import { getDirection } from '../../utils/direction';
+import { useLocaleLinks } from '../../utils/locale-link';
 
 export default function HomePage() {
   const messages = useMessages();
   const locale = useLocale();
   const direction = getDirection(locale);
   const isRTL = direction === 'rtl';
+  const localeLinks = useLocaleLinks(locale);
 
   return (
     <div className="min-h-screen bg-gray-50 text-black">
@@ -44,7 +46,7 @@ export default function HomePage() {
               <li>{messages['HavenOSFeature4']}</li>
               <li>{messages['HavenOSFeature5']}</li>
             </ul>
-            <Link href="/havenos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">{messages['ExploreHavenOS']}</Link>
+            <Link href={localeLinks.havenos} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">{messages['ExploreHavenOS']}</Link>
           </div>
         </div>
       </section>
@@ -67,7 +69,7 @@ export default function HomePage() {
               <li>{messages['DockOSFeature4']}</li>
               <li>{messages['DockOSFeature5']}</li>
             </ul>
-            <Link href="/dockos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">{messages['ExploreDockOS']}</Link>
+            <Link href={localeLinks.dockos} className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">{messages['ExploreDockOS']}</Link>
           </div>
         </div>
       </section>
@@ -77,7 +79,7 @@ export default function HomePage() {
         <div className="bg-blue-50 p-8 rounded-lg shadow">
           <h2 className="text-3xl font-bold mb-4 text-blue-900">{messages['CareersTitle']}</h2>
           <p className="text-lg mb-4 text-gray-700">{messages['CareersDescription']}</p>
-          <Link href="/developers" className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">{messages['ViewOpenRoles']}</Link>
+          <Link href={localeLinks.careers} className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">{messages['ViewOpenRoles']}</Link>
         </div>
       </section>
     </div>
