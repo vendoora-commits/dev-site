@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import './globals.css'
 import Navigation from '../components/Navigation';
+import { getDirection } from '../utils/direction';
+import { getLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'Vendoora: Operational Services',
@@ -36,15 +38,18 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.vendoora.dev'),
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   const messages = useMessages();
+  const locale = await getLocale();
+  const direction = getDirection(locale);
+  
   return (
-    <html lang="en">
-      <body className="bg-gray-50">
+    <html lang={locale} dir={direction}>
+      <body className={`bg-gray-50 ${direction === 'rtl' ? 'rtl' : 'ltr'}`}>
         <NextIntlClientProvider messages={messages}>
           <Navigation />
           <div className="pt-16">{children}</div>

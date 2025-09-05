@@ -1,0 +1,123 @@
+{
+  "mcpServers": {
+    "vendoora-visual-analysis": {
+      "command": "node",
+      "args": ["mcp-tools/vendoora-mcp-visual-analysis/dist/visual-analysis-mcp.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "vendoora-ai-coding": {
+      "command": "node", 
+      "args": ["mcp-tools/vendoora-mcp-ai-coding/dist/ai-coding-mcp.js"],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "OPENAI_BASE_URL": "${OPENAI_BASE_URL}",
+        "NODE_ENV": "production"
+      }
+    },
+    "vendoora-analytics": {
+      "command": "node",
+      "args": ["mcp-tools/vendoora-mcp-analytics/dist/analytics-mcp.js"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/Users/patrickegan/vendoora/dev-site-1"],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "supabase": {
+      "command": "npx",
+      "args": ["@supabase/mcp-server-supabase"],
+      "env": {
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_ANON_KEY": "${SUPABASE_ANON_KEY}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}"
+      }
+    }
+  },
+  "tools": {
+    "visual-analysis": {
+      "description": "Analyze website pages for accessibility, performance, and best practices",
+      "tools": [
+        "renderAndAnalyzePage",
+        "analyzeCrossDevice", 
+        "crossReferenceBestPractices"
+      ]
+    },
+    "ai-coding": {
+      "description": "AI-powered code generation, analysis, and optimization",
+      "tools": [
+        "generateCode",
+        "analyzeCode",
+        "refactorCode",
+        "generateTests",
+        "optimizePerformance",
+        "securityAudit",
+        "codeReview",
+        "generateDocumentation"
+      ]
+    },
+    "analytics": {
+      "description": "Website analytics and monitoring tools",
+      "tools": [
+        "trackPageView",
+        "trackEvent",
+        "getAnalytics",
+        "generateReport"
+      ]
+    },
+    "filesystem": {
+      "description": "File system operations and management",
+      "tools": [
+        "read_file",
+        "write_file",
+        "list_directory",
+        "search_files"
+      ]
+    },
+    "supabase": {
+      "description": "Database operations and real-time features",
+      "tools": [
+        "query",
+        "insert",
+        "update",
+        "delete",
+        "subscribe"
+      ]
+    }
+  },
+  "configuration": {
+    "rtlSupport": {
+      "enabled": true,
+      "languages": ["ar", "he", "fa", "ur"],
+      "autoDetect": true
+    },
+    "i18n": {
+      "locales": ["en", "es", "pt", "fr", "bn", "uz", "ru", "he", "ar", "ur"],
+      "defaultLocale": "en",
+      "localePrefix": "never",
+      "domainMapping": {
+        "vendoora.pk": "ur",
+        "vendoora.us.com": "en",
+        "vendoora.es": "es",
+        "vendoora.pt": "pt",
+        "vendoora.fr": "fr",
+        "vendoora.bd": "bn",
+        "vendoora.uz": "uz",
+        "vendoora.ru": "ru",
+        "vendoora.il": "he",
+        "vendoora.sa": "ar"
+      }
+    },
+    "performance": {
+      "monitoring": true,
+      "lighthouse": true,
+      "accessibility": true
+    }
+  }
+}

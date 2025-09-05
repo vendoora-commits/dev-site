@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { getDirection } from '../../utils/direction';
 
 export const metadata: Metadata = {
 	title: 'About | Vendoora',
@@ -18,28 +19,31 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+	const direction = getDirection('en'); // This will be dynamic in a real implementation
+	const isRTL = direction === 'rtl';
+	
 	return (
-		<div className="min-h-screen bg-white text-black">
+		<div className={`min-h-screen bg-white text-black ${isRTL ? 'rtl' : 'ltr'}`}>
 			<div className="container mx-auto px-4 py-16 max-w-4xl">
 				<div className="w-full rounded-lg mb-10 overflow-hidden">
 					<Image src="/images/About_Hero.png" alt="Vendoora Enterprise Hero" width={1200} height={400} priority sizes="(max-width: 768px) 100vw, 1200px" />
 				</div>
 
-				<h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-blue-900 tracking-tight">Vendoora — Engineering Operational Services at Global Scale</h1>
-				<p className="text-lg md:text-xl mb-10 text-gray-700">
+				<h1 className={`text-4xl md:text-5xl font-extrabold mb-6 text-blue-900 tracking-tight ${isRTL ? 'text-right' : 'text-left'}`}>Vendoora — Engineering Operational Services at Global Scale</h1>
+				<p className={`text-lg md:text-xl mb-10 text-gray-700 ${isRTL ? 'text-right' : 'text-left'}`}>
 					Vendoora is an AI-native, edge-resilient, and compliance-first platform purpose-built to unify operations across the global hospitality, living, and maritime industries. Designed for enterprise performance, security, and scale, Vendoora redefines how operators, staff, and guests connect — seamlessly, sustainably, and intelligently.
 				</p>
 
 				<section className="mb-12">
-					<h2 className="text-2xl font-bold mb-4 text-blue-800">Markets We Serve</h2>
-					<ul className="list-disc ml-6 space-y-2 text-gray-800">
+					<h2 className={`text-2xl font-bold mb-4 text-blue-800 ${isRTL ? 'text-right' : 'text-left'}`}>Markets We Serve</h2>
+					<ul className={`list-disc space-y-2 text-gray-800 ${isRTL ? 'mr-6' : 'ml-6'}`}>
 						<li><span className="font-semibold">Hotels & Resorts</span> — From boutique properties to global chains.</li>
 						<li><span className="font-semibold">Senior Living Communities</span> — Enhancing safety, efficiency, and personalized care.</li>
 						<li><span className="font-semibold">Campgrounds & RV Parks</span> — Delivering offline resilience for remote destinations.</li>
 						<li><span className="font-semibold">Marinas & Cruises</span> — Edge-first operations designed for complex, mobile environments.</li>
 						<li><span className="font-semibold">Student Housing & Mixed-Use Properties</span> — Unified experiences for diverse resident populations.</li>
 					</ul>
-					<p className="mt-4 text-gray-700">Wherever people gather to live, stay, or travel, Vendoora provides a unified foundation for operational excellence.</p>
+					<p className={`mt-4 text-gray-700 ${isRTL ? 'text-right' : 'text-left'}`}>Wherever people gather to live, stay, or travel, Vendoora provides a unified foundation for operational excellence.</p>
 				</section>
 
 				<section className="mb-12">

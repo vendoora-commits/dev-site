@@ -1,0 +1,50 @@
+{
+  "name": "vendoora-mcp-analytics",
+  "version": "1.0.0",
+  "description": "Advanced analytics and monitoring MCP server for enterprise metrics, performance tracking, and business intelligence",
+  "main": "dist/analytics-mcp.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/analytics-mcp.ts",
+    "start": "node dist/analytics-mcp.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "keywords": [
+    "mcp",
+    "analytics",
+    "monitoring",
+    "metrics",
+    "performance-tracking",
+    "business-intelligence",
+    "vendoora"
+  ],
+  "author": "Vendoora Team",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "openai": "^4.0.0",
+    "prom-client": "^15.0.0",
+    "elasticsearch": "^16.0.0",
+    "fs-extra": "^11.0.0",
+    "glob": "^10.0.0",
+    "yaml": "^2.3.0",
+    "json5": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

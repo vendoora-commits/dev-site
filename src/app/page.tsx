@@ -1,8 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getDirection } from '../utils/direction';
 
 export default function HomePage() {
+  // This should be dynamic based on locale, but for now we'll use a default
+  const direction = getDirection('en'); // This will be dynamic in a real implementation
+  const isRTL = direction === 'rtl';
   return (
     <div className="min-h-screen bg-gray-50 text-black">
       {/* HERO SECTION */}
@@ -19,16 +23,16 @@ export default function HomePage() {
 
       {/* HAVENOS SECTION */}
       <section className="container mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 order-2 md:order-1 flex justify-center">
+        <div className={`flex flex-col md:flex-row items-center gap-12 ${isRTL ? 'rtl' : 'ltr'}`}>
+          <div className={`flex-1 ${isRTL ? 'order-1 md:order-2' : 'order-2 md:order-1'} flex justify-center`}>
             <Image src="/images/Main_HavenOS.png" alt="HavenOS" width={400} height={200} className="rounded shadow" />
           </div>
-          <div className="flex-1 order-1 md:order-2">
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">HavenOS</h2>
-            <p className="text-lg text-gray-700 mb-6">
+          <div className={`flex-1 ${isRTL ? 'order-2 md:order-1' : 'order-1 md:order-2'}`}>
+            <h2 className={`text-4xl font-bold text-blue-900 mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>HavenOS</h2>
+            <p className={`text-lg text-gray-700 mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>
               HavenOS is the AI-powered platform for hospitality operations. It streamlines guest check-in, smart room controls, loyalty rewards, and staff workflows—all with privacy-preserving, on-device AI. Sustainability and compliance are built in, with dashboards for managers and QR storytelling for guests.
             </p>
-            <ul className="list-disc ml-6 text-gray-700 mb-6">
+            <ul className={`list-disc text-gray-700 mb-6 ${isRTL ? 'mr-6' : 'ml-6'}`}>
               <li>Contactless check-in & smart room controls</li>
               <li>Role-adaptive staff app + AI co-pilot</li>
               <li>Predictive dashboards for operators</li>
@@ -37,22 +41,21 @@ export default function HomePage() {
             </ul>
             <Link href="/havenos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">Explore HavenOS</Link>
           </div>
-          {/* Removed duplicate image and placeholder comment */}
         </div>
       </section>
 
       {/* DOCKOS SECTION */}
       <section className="container mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 order-2 md:order-1 flex justify-center">
+        <div className={`flex flex-col md:flex-row items-center gap-12 ${isRTL ? 'rtl' : 'ltr'}`}>
+          <div className={`flex-1 ${isRTL ? 'order-1 md:order-2' : 'order-2 md:order-1'} flex justify-center`}>
             <Image src="/images/Main_DockOS.png" alt="DockOS" width={400} height={200} className="rounded shadow" />
           </div>
-          <div className="flex-1 order-1 md:order-2">
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">DockOS</h2>
-            <p className="text-lg text-gray-700 mb-6">
+          <div className={`flex-1 ${isRTL ? 'order-2 md:order-1' : 'order-1 md:order-2'}`}>
+            <h2 className={`text-4xl font-bold text-blue-900 mb-4 ${isRTL ? 'text-right' : 'text-left'}`}>DockOS</h2>
+            <p className={`text-lg text-gray-700 mb-6 ${isRTL ? 'text-right' : 'text-left'}`}>
               DockOS is the AI-driven platform for marinas. It simplifies slip reservations, dock concierge, guest loyalty, and vessel analytics. Offline-first P2P sync ensures resilience, while PCI-ready payments and end-to-end encryption keep data secure.
             </p>
-            <ul className="list-disc ml-6 text-gray-700 mb-6">
+            <ul className={`list-disc text-gray-700 mb-6 ${isRTL ? 'mr-6' : 'ml-6'}`}>
               <li>Slip reservations & billing</li>
               <li>Dock concierge & bookings</li>
               <li>Guest loyalty & marina marketplace</li>
@@ -61,7 +64,6 @@ export default function HomePage() {
             </ul>
             <Link href="/dockos" className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">Explore DockOS</Link>
           </div>
-          {/* Removed duplicate image and placeholder comment */}
         </div>
       </section>
 

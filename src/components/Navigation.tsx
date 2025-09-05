@@ -6,12 +6,23 @@ import Image from 'next/image';
 import { useMessages } from 'next-intl';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from './LanguageSwitcher';
+import { getDirection } from '../utils/direction';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [currentLocale, setCurrentLocale] = useState('en');
   const messages = useMessages();
+
+  useEffect(() => {
+    // Detect current locale from URL or localStorage
+    if (typeof window !== 'undefined') {
+      const pathLocale = window.location.pathname.split('/')[1];
+      const locale = ['en', 'es', 'pt', 'fr', 'bn', 'uz', 'ru', 'he', 'ar', 'ur'].includes(pathLocale) ? pathLocale : 'en';
+      setCurrentLocale(locale);
+    }
+  }, []);
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -45,10 +56,13 @@ export default function Navigation() {
     { name: messages['Careers'] || 'Careers', href: '/developers' },
   ];
 
+  const direction = getDirection(currentLocale);
+  const isRTL = direction === 'rtl';
+
   return (
     <nav className={`bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 shadow-xl border-b border-blue-700/30 fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
-    }`}>
+    } ${isRTL ? 'rtl' : 'ltr'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -66,7 +80,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
+            <div className={`${isRTL ? 'mr-10 space-x-reverse' : 'ml-10'} flex items-center space-x-8`}>
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -76,14 +90,14 @@ export default function Navigation() {
                   {item.name}
                 </Link>
               ))}
-              <div className="ml-6 pl-6 border-l border-blue-600">
+              <div className={`${isRTL ? 'mr-6 pr-6 border-r' : 'ml-6 pl-6 border-l'} border-blue-600`}>
                 <LanguageSwitcher />
               </div>
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className={`md:hidden flex items-center ${isRTL ? 'space-x-reverse' : ''} space-x-4`}>
             <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
