@@ -247,6 +247,8 @@ Edit `mcp-config.json` to customize:
 - RTL/LTR support settings
 
 ### Environment Variables
+
+#### For Development (MCP Tools)
 Required environment variables in `.env.mcp`:
 ```bash
 # OpenAI Configuration (for AI coding tools)
@@ -259,6 +261,21 @@ SUPABASE_ANON_KEY=your_supabase_anon_key_here
 # Analytics Configuration
 ANALYTICS_API_KEY=your_analytics_api_key_here
 ```
+
+#### For Production (Vercel Deployment)
+Required environment variables in Vercel dashboard:
+```bash
+# Contact Form Configuration
+EMAIL_USER=vendoora2025@gmail.com
+EMAIL_PASS=your_gmail_app_password_here
+
+# Optional: Internationalization
+NEXT_PUBLIC_DEFAULT_LOCALE=en
+NEXT_PUBLIC_DOMAIN_ROUTING=true
+NEXT_PUBLIC_SITE_URL=https://vendoora.pk
+```
+
+**📋 See [ENVIRONMENT_VARIABLES.md](ENVIRONMENT_VARIABLES.md) for detailed setup instructions.**
 
 ## 🧪 Testing
 
@@ -278,6 +295,8 @@ npm run mcp:test
 
 - [MCP Tools Documentation](MCP_TOOLS.md) - Detailed MCP tools usage
 - [Contact Setup](CONTACT_SETUP.md) - Email configuration
+- [Environment Variables](ENVIRONMENT_VARIABLES.md) - Production deployment setup
+- [Vercel Deployment](VERCEL_DEPLOYMENT.md) - Domain-based locale deployment
 - [Next.js Documentation](https://nextjs.org/docs) - Next.js framework docs
 - [next-intl Documentation](https://next-intl-docs.vercel.app/) - Internationalization docs
 
