@@ -4,6 +4,7 @@
  */
 
 export const DOMAIN_LOCALE_MAP: Record<string, string> = {
+  'vendoora.dev': 'en', // Primary development domain
   'vendoora.pk': 'ur',
   'vendoora.us.com': 'en',
   'vendoora.es': 'es',
