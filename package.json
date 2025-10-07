@@ -7,11 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "mcp:start": "node run-mcp.js start",
-    "mcp:stop": "node run-mcp.js stop",
-    "mcp:list": "node run-mcp.js list",
-    "mcp:setup": "bash setup-mcp.sh",
-    "mcp:test": "node run-mcp.js start & sleep 5 && node run-mcp.js stop",
     "verify:rtl": "node verify-rtl.js"
   },
   "dependencies": {
@@ -34,21 +29,9 @@
     "eslint-config-next": "15.4.7",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "@modelcontextprotocol/sdk": "^1.0.0",
-    "@modelcontextprotocol/server-filesystem": "^2025.8.21",
-    "@supabase/mcp-server-supabase": "^0.5.1",
     "playwright": "^1.55.0",
     "openai": "^5.16.0",
     "tsx": "^4.19.1",
     "dotenv": "^16.3.1"
-  },
-  "packageManager": "pnpm@10.15.1",
-  "pnpm": {
-    "allowedBuildScripts": [
-      "@tailwindcss/oxide",
-      "esbuild", 
-      "sharp",
-      "unrs-resolver"
-    ]
   }
 }
